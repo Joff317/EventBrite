@@ -1,8 +1,7 @@
 class User < ApplicationRecord
-  has_many :attendances
-  has_many :events, through: :attendances
-
-  has_many :events, foreign_key: 'admin_id', class_name: "Event"
+  
+   has_many :attendant_events, foreign_key: 'attendant_id', class_name: "Attendance"
+   has_many :admin_events, foreign_key: 'admin_id', class_name: "Event"
 
   after_create :welcome_send
 

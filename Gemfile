@@ -66,3 +66,5 @@ gem 'faker'
 
 gem 'dotenv-rails'
 
+gem 'table_print'
+

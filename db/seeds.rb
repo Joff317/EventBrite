@@ -9,10 +9,10 @@ require 'faker'
 
 2.times do 
    User.create(
+     email: Faker::Name.first_name+'@yopmail.com',
      first_name: Faker::Name.first_name,
      last_name: Faker::Name.last_name,
      description: Faker::Lorem.sentence(word_count: 10),
-     email: "@yopmail.com"
      )
 end
 
@@ -29,10 +29,3 @@ t2 = Time.parse("2025-01-23 13:30:33")
     title: Faker::Book.title,
     admin_id: User.all.sample.id)
 end 
-
-20.times do 
-   Attendance.create( 
-      user_id: User.all.sample.id, 
-      event_id: Event.all.sample.id 
-   )
-end
