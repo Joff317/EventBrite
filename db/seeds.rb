@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-2.times do 
+2.times do |x|
    User.create(
-     email: Faker::Name.first_name+'@yopmail.com',
+     email: "user#{x}@yopmail.com",
      first_name: Faker::Name.first_name,
      last_name: Faker::Name.last_name,
      description: Faker::Lorem.sentence(word_count: 10),
@@ -27,5 +27,15 @@ t2 = Time.parse("2025-01-23 13:30:33")
     location: Faker::Address.city,
     price: rand(1..1000),
     title: Faker::Book.title,
-    admin_id: User.all.sample.id)
+    admin: User.all.sample)
 end 
+
+Event.all.each do |event|
+   n = rand(1..3)
+   n.times do 
+      Attendance.create(
+         event: event,
+         attendant: User.all.sample
+      )
+   end
+end
