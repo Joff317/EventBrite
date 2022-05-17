@@ -1,0 +1,48 @@
+<% content_for :title, "Create a new Event" %>
+<div class="text-center mt-5">
+	<h1>New Event</h1>
+	<p>Create a new Event !</p>
+</div>
+
+<% if !@event.nil? && @event.errors.any? %>
+<div class="alert alert-danger" role="alert">
+  <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+  <ul>
+    <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>  
+<% end %>
+<div class="form-container"> 
+<%= form_tag url_for(action: 'create'), method: "post" do %>
+
+   <%= label_tag 'Titre' %>
+   <%= text_field_tag 'title', (@event.title if !@event.nil?) %>
+   <br /> <br />
+
+   <%= label_tag 'Description' %>
+      <%= text_area_tag 'description',(@event.description if !@event.nil?)  %>
+      <br /> <br />
+   
+      <%= label_tag 'Startdate' %>
+      <%= text_area_tag 'start_date',(@event.start_date if !@event.nil?)  %>
+      <br /> <br />   
+    
+      <%= label_tag 'Duration' %>
+      <%= text_area_tag 'duration',(@event.duration if !@event.nil?)  %>
+      <br /> <br />   
+
+
+      <%= label_tag 'Price' %>
+      <%= text_area_tag 'price',(@event.price if !@event.nil?)  %>
+      <br /> <br />   
+
+
+      <%= label_tag 'Location' %>
+      <%= text_area_tag 'location',(@event.location if !@event.nil?)  %>
+      <br /> <br />   
+
+      <%= submit_tag "Enregistrer cet event" %>
+    <% end %>
+</div>    
