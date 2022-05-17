@@ -9,6 +9,15 @@
       <p> Nom : <%=@user.last_name%></p>
       <p> Description : <%=@user.description%></p>
       <p> Email : <%=@user.email%></p>
+      <%= link_to "Edit your password", edit_user_registration_path(@user) %>
       </div>
+
+      <p> Voici ses événements : </p>
+      <% @events.each do |event| %>
+         <% if event.admin_id == @user.id %>
+         <p><%= event.title%></p>
+      <%= link_to "Aller sur l'événement", event_path(event.id) %>   
+      <% end %> 
+      <% end %>
    </div>  
 </div>

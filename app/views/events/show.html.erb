@@ -15,6 +15,7 @@
     	<h5 class="card-title"><%= @event.title %> </h5>
     	<p class="card-title"><strong>Producer : </strong><%= @admin.first_name %><%=" "%> <%=@admin.last_name %></p>
     	<p class="card-title"><strong>Start date : </strong> <%= @event.start_date.strftime("%h %d %Y, %H:%M") %></p>
+      <p class="card-title"><strong>End date   : </strong> <%= get_end_date(@event).strftime("%h %d %Y, %H:%M") %> </p>
       <p class="card-title"><strong>Duration : </strong><%= @event.duration %> min</p>
     	<p class="card-title"><strong>Location : </strong><%= @event.location %></p>
     	<p class="card-title"> <strong>Description : </strong></br></br> <%= @event.description %></p></br>  </br> 
