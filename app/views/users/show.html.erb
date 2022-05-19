@@ -1,7 +1,16 @@
 <div class="card">
    <div class="card-header font-weight-bold">
-   <img src="https://source.unsplash.com/200x200/?portrait?sig=<%=rand(1..50)%>" 
-                     alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"> 
+   <h3>Avatar actuel</h3>
+  <%if @user.avatar.attached?%>
+  <%= image_tag @user.avatar, alt: 'avatar' %>
+  <%else%>
+  <p>=== Il n'y à pas encore d'avatar lié à cet utilisateur===</p>
+  <%end%>
+  <h3>Changer d'avatar ?</h3>
+<%= form_tag user_avatars_path(@user), multipart: true do %>
+  <%= file_field_tag :avatar %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
    </div>
    <div class="card-body">                
       <h4 class="card-title"> Prenom : <%=@user.first_name%></h4>

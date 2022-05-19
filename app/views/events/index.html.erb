@@ -32,9 +32,6 @@
 			        		<p class="text-info"><%= event.location %></p>
 			         		<h5 class="text-info"><%= event.title %></h5>
 			         		<p class="text-info"><%= event.start_date.strftime("%B %d, %Y")%></p>
-			         		<% if user_signed_in? %>
-			          		<%= link_to "Buy Now", new_attendance_path , class: "btn btn-danger text-white m-2" %>
-			          		<% end %>
 			       		</div>
 			      	</div>
 			    </div>

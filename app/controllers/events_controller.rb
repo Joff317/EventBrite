@@ -21,6 +21,9 @@ class EventsController < ApplicationController
      @event = Event.new
    end
  
+   def edit 
+    @event = Event.find(params[:id])
+   end
 
    def create
      @event = Event.new(title: params[:title], 
@@ -42,6 +45,21 @@ class EventsController < ApplicationController
      end
    end
 
+   def update
+    @event = Event.find(params[:id]) 
+    event_params = params.require(:event).permit(:title, :description)
+    if @event.update(event_params)
+    redirect_to action: "show", notice: 'Success', :id => @event.id
+    else 
+    render :action => 'edit'
+    end   
+   end
+
+   def destroy
+    @event = Event.find(params[:id])
+       @event.destroy
+       redirect_to root_path
+   end
 
    private
      # Use callbacks to share common setup or constraints between actions.

@@ -70,3 +70,5 @@ gem 'table_print'
 
 gem 'devise'
 
+gem 'stripe'
+

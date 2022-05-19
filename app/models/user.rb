@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
    has_many :attendant_events, foreign_key: 'attendant_id', class_name: "Attendance"
    has_many :admin_events, foreign_key: 'admin_id', class_name: "Event"
+   has_one_attached :avatar 
 
   after_create :welcome_send
 
